@@ -3,10 +3,10 @@ import PropTypes from 'prop-types';
 // import '../style/AudioVisualizer.css';
 import visualize from './lib/visualize';
 
-export default function AudioVisualizer({ audio } : {audio: any}) {
+export default function AudioVisualizer({ audio, width, height }) {
   const canvas = useRef();
-  const [mainAudio, setMainAudio]: any = useState({});
-  const [visAudio, setVisAudio]: any = useState({});
+  const [mainAudio, setMainAudio]= useState({});
+  const [visAudio, setVisAudio] = useState({});
   const [isPlaying, setIsPlaying] = useState(false);
   const [isMuted, setIsMuted] = useState(true);
 
@@ -22,38 +22,44 @@ export default function AudioVisualizer({ audio } : {audio: any}) {
     // Mute by default
     mute(mainAudio);
 
-    visualize(visAudio, canvas.current);
+    visualize(visAudio, canvas.current, { width, height });
 
     setMainAudio(mainAudio);
     setVisAudio(visAudio);
     play(mainAudio, visAudio);
-  }, [audio])
+  }, [audio, width, height]);
 
   return (
     <div className="AudioVisualizer">
       <h1>{audio ? audio.title : 'None'}</h1>
       <h2>{audio ? audio.artist.name : 'None'}</h2>
       <div className="contents" role="main">
-        <canvas ref={canvas}></canvas>
+        <canvas ref={canvas} width={width} height={height}/>
         <div className="row">
           <button
-            onClick={() => isPlaying ? stop(mainAudio, visAudio) : play(mainAudio, visAudio)}
-          >{isPlaying ? 'Stop' : 'Play'}</button>
+            onClick={() =>
+              isPlaying ? stop(mainAudio, visAudio) : play(mainAudio, visAudio)
+            }
+          >
+            {isPlaying ? 'Stop' : 'Play'}
+          </button>
           <button
-            onClick={() => isMuted ? unmute(mainAudio) : mute(mainAudio)}
-          >{isMuted ? 'Unmute' : 'Mute'}</button>
+            onClick={() => (isMuted ? unmute(mainAudio) : mute(mainAudio))}
+          >
+            {isMuted ? 'Unmute' : 'Mute'}
+          </button>
         </div>
       </div>
     </div>
-  )
+  );
 
-  function play(main: any = mainAudio, vis: any = visAudio) {
+  function play(main = mainAudio, vis = visAudio) {
     main.play();
     vis.play();
     setIsPlaying(true);
   }
 
-  function stop(main: any = mainAudio, vis: any = visAudio) {
+  function stop(main = mainAudio, vis = visAudio) {
     main.pause();
     vis.pause();
     main.currentTime = 0;
@@ -63,15 +69,17 @@ export default function AudioVisualizer({ audio } : {audio: any}) {
     setIsPlaying(false);
   }
 
-  function mute(audio: any) {
+  function mute(audio) {
     audio.muted = true;
     setIsMuted(true);
   }
-  function unmute(audio: any) {
+  function unmute(audio) {
     audio.muted = false;
     setIsMuted(false);
   }
 }
 AudioVisualizer.propTypes = {
-  audio: PropTypes.object
-}
+  audio: PropTypes.object,
+  width: PropTypes.number,
+  height: PropTypes.number
+};

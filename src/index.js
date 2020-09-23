@@ -1,7 +1,7 @@
-import {
-  JupyterFrontEnd,
-  JupyterFrontEndPlugin
-} from '@jupyterlab/application';
+// import {
+//   JupyterFrontEnd,
+//   JupyterFrontEndPlugin
+// } from '@jupyterlab/application';
 
 import { MainAreaWidget } from '@jupyterlab/apputils';
 
@@ -21,11 +21,11 @@ import AudioWidget from './widget';
 /**
  * Initialization data for the react-widget extension.
  */
-const extension: JupyterFrontEndPlugin<void> = {
+const extension = {
   id: 'react-widget',
   autoStart: true,
   optional: [ILauncher],
-  activate: (app: JupyterFrontEnd, launcher: ILauncher) => {
+  activate: (app, launcher) => {
     const { commands } = app;
 
     const command = 'create-react-widget';
@@ -35,8 +35,8 @@ const extension: JupyterFrontEndPlugin<void> = {
       icon: args => (args['isPalette'] ? null : reactIcon),
       execute: () => {
         const content = new AudioWidget();
-        const widget = new MainAreaWidget<AudioWidget>({ content });
-        widget.title.label = 'React Widget';
+        const widget = new MainAreaWidget({ content });
+        widget.title.label = 'Music Visualizer';
         app.shell.add(widget, 'main');
       }
     });

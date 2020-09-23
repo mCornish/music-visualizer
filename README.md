@@ -1,10 +1,6 @@
-# React Widget
+# Music Visualizer
 
-> Create a React.js Widget in JupyterLab.
-
-This extension shows how to use the `ReactWidget` wrapper from `@jupyterlab/apputils` to use React in a JupyterLab extension.
-
-![react-widget](preview2.gif)
+This JupyterLab extension plays music and visualizes the frequencies.
 
 ## Install
 
@@ -27,9 +23,3 @@ jlpm watch
 # Run jupyterlab in watch mode in one terminal tab
 jupyter lab --watch
 ```
-
-## React Developer Tools
-
-It is possible to use the [React Developer Tools](https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi?hl=de) Chrome extension to inspect React components.
-
-![react-dev-tools](preview.gif)

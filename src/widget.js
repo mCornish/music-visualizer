@@ -8,16 +8,20 @@ function Widget() {
   // Fetch audio
   useEffect(() => {
     (async () => {
-      const audio: any = await fetchAudio();
+      const audio = await fetchAudio();
       setAudio(audio);
       localStorage.setItem('audio-vis-audio', JSON.stringify(audio));
     })();
-  }, [])
+  }, []);
   return (
-    <AudioVisualizer
-      audio={audio}
-    />
-  )
+    <div className="Widget">
+      <AudioVisualizer
+        audio={audio}
+        width={800}
+        height={300}
+      />
+    </div>
+  );
 }
 
 /**
@@ -32,7 +36,7 @@ export default class AudioWidget extends ReactWidget {
     this.addClass('jp-ReactWidget');
   }
 
-  render(): JSX.Element {
+  render() {
     return <Widget />;
   }
 }
