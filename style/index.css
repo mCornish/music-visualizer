@@ -1,0 +1,38 @@
+.jp-ReactWidget {
+  color: var(--jp-ui-font-color1);
+  background: var(--jp-layout-color1);
+  font-size: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+h1 {
+  font-size: 2rem;
+}
+h2 {
+  font-size: 1rem;
+}
+button {
+  font-size: 1.5rem;
+}
+
+.contents {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+.contents > * + * {
+  margin-top: 1em;
+}
+
+.row {
+  display: flex;
+}
+.row > * + * {
+  margin-left: 1em;
+}
+
