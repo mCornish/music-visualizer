@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
-// import '../style/AudioVisualizer.css';
+import '../style/AudioVisualizer.css';
 import visualize from './lib/visualize';
 
 export default function AudioVisualizer({ audio, width, height }) {
