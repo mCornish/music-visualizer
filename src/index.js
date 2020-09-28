@@ -12,17 +12,10 @@ import { reactIcon } from '@jupyterlab/ui-components';
 import AudioWidget from './widget';
 
 /**
- * The command IDs used by the react-widget plugin.
- */
-// namespace CommandIDs {
-//   export const create = 'create-react-widget';
-// }
-
-/**
  * Initialization data for the react-widget extension.
  */
 const extension = {
-  id: 'react-widget',
+  id: 'music-visualizer',
   autoStart: true,
   optional: [ILauncher],
   activate: (app, launcher) => {

@@ -1,7 +1,7 @@
 {
-  "name": "@jupyterlab-examples/react-widget",
+  "name": "music-visualizer",
   "version": "0.1.0",
-  "description": "Example of using a React Widget in a Jupyterlab extension",
+  "description": "A JupyterLab extension that plays music and visualizes its frequencies",
   "keywords": [
     "jupyter",
     "jupyterlab",
