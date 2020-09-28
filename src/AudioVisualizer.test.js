@@ -1,6 +1,6 @@
 import React from 'react';
-import { render, fireEvent, waitFor, screen } from '@testing-library/react'
-import '@testing-library/jest-dom/extend-expect'
+import { render, fireEvent, waitFor, screen } from '@testing-library/react';
+import '@testing-library/jest-dom/extend-expect';
 import AudioVisualizer from './AudioVisualizer';
 
 window.HTMLMediaElement.prototype.play = () => { /* do nothing */ };
